@@ -1,0 +1,15 @@
+---
+- name: Delete EC2 Instance
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: Terminate the specified EC2 instance
+    amazon.aws.ec2_instance:
+      instance_ids: "i-04ca7fa952770b9a4" # Replace with your instance ID
+      state: absent
+      region: ap-south-1 # Replace with your region
+    register: result
+
+  - name: Debug result
+    debug:
+      var: result

@@ -1,0 +1,37 @@
+# Ansible-specific files
+*.retry
+*.log
+
+# Sensitive credentials and keys
+*.pem
+*.pub
+~/.aws/
+credentials.csv
+vault.pass  # Add this line to ignore the vault passphrase file
+
+# Virtual environments
+myenv/
+venv/
+*.pyc
+__pycache__/
+
+# Temporary and local files
+*.bak
+*.swp
+*.tmp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# VS Code and IDE files
+.vscode/
+*.code-workspace
+
+# Project-specific exclusions (optional)
+# inventory.ini    # Static inventory (keep if public, exclude if sensitive)
+# inventory.yml    # Dynamic inventory (exclude if sensitive)
+# ansible.cfg      # Configuration (exclude if sensitive)
+# mydata.yml       # Data file (exclude if sensitive)
+ec2/vault.pass
+ec2/group_vars/all/pass.yml
