@@ -35,3 +35,5 @@ Thumbs.db
 # mydata.yml       # Data file (exclude if sensitive)
 ec2/vault.pass
 ec2/group_vars/all/pass.yml
+ansible-realtime-project/vault.pass
+ansible-realtime-project/group_vars/all/pass.yml

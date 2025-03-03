@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+  - name: Create EC2 instances
+    amazon.aws.ec2_instance:
+      name: "{{item.name}}"
+      key_name: "kiss"
+      instance_type: t2.micro
+      security_group: ansible-realtime-sg
+      region: ap-south-1
+      aws_access_key: "{{ec2_access_key}}"
+      aws_secret_key: "{{ec2_secret_key}}"
+      network:
+        assign_public_ip: true
+      image_id: "{{item.image}}"
+      tags:
+        environment: "{{item.name}}"
+    loop:
+    - { image: "ami-0d682f26195e9ec0f", name: "manage-node-1" }
+    - { image: "ami-0d682f26195e9ec0f", name: "manage-node-2" }
+    - { image: "ami-00bb6a80f01f03502", name: "manage-node-3" }
