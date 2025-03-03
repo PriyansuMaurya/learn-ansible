@@ -1,0 +1,33 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+  - name: Make sure the packages openssl and openssh are up-to-date
+    ansible.builtin.apt:
+      name: "{{item}}"
+      state: latest
+    loop:
+    - openssh
+    - openssl
+    ignore_errors: yes
+  - name: Verify if Docker is installed
+    ansible.builtin.command: docker --version
+    register: output
+    ignore_errors: yes
+  - name: Install Docker
+    ansible.builtin.apt:
+      name: docker.io
+      state: present
+    when: output.failed
+  - name: Verify again wheather docker is successfully installed
+    ansible.builtin.command: docker --version
+  - name: Check if the file "priyanshu" exists
+    ansible.builtin.command: ls /priyanshu
+    register: result
+    # - ansible.builtin.debug:
+    #     var: result
+
+    failed_when:
+    - result.rc == 0
+    - '"No such" not in result.stdout'
