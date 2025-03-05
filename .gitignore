@@ -37,3 +37,9 @@ ec2/vault.pass
 ec2/group_vars/all/pass.yml
 ansible-realtime-project/vault.pass
 ansible-realtime-project/group_vars/all/pass.yml
+anisble-vault/vault.pass
+policy-as-code-s3-example/vault.pass
+anisble-vault/aws_credential.yml
+.gitignore
+.gitignore
+policy-as-code-s3-example/s3_credential.yml
